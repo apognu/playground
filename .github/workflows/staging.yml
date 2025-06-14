@@ -1,0 +1,21 @@
+name: Deploy staging
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Building
+        run: echo Build...
+
+  docker:
+    needs: [build]
+    uses: ./.github/workflows/docker.yml
+    permissions:
+      contents: read
+    secrets: inherit
+    with:
+      environment: staging
