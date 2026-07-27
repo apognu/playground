@@ -13,6 +13,9 @@ jobs:
     env:
       PRERELEASE: ${{ contains(github.ref_name, '-rc.') }}
     steps:
+      - run: |
+          echo super release > artifact
+
       - name: Create release
         uses: softprops/action-gh-release@v3
         with:
@@ -24,11 +27,11 @@ jobs:
           files: |
             artifact
 
-      # - name: Publish prerelease
-      #   uses: softprops/action-gh-release@v3
-      #   if: env.PRERELEASE == 'true'
-      #   with:
-      #     name: ${{ inputs.tag }}
-      #     make_latest: false
-      #     draft: false
-      #     prerelease: true
+      - name: Publish prerelease
+        uses: softprops/action-gh-release@v3
+        if: env.PRERELEASE == 'true'
+        with:
+          name: ${{ inputs.tag }}
+          make_latest: false
+          draft: false
+          prerelease: true
