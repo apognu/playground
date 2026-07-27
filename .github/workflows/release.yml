@@ -24,11 +24,11 @@ jobs:
           files: |
             artifact
 
-      - name: Publish prerelease
-        uses: softprops/action-gh-release@v3
-        if: env.PRERELEASE == 'true'
-        with:
-          name: ${{ inputs.tag }}
-          make_latest: false
-          draft: false
-          prerelease: true
+      # - name: Publish prerelease
+      #   uses: softprops/action-gh-release@v3
+      #   if: env.PRERELEASE == 'true'
+      #   with:
+      #     name: ${{ inputs.tag }}
+      #     make_latest: false
+      #     draft: false
+      #     prerelease: true
