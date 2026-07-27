@@ -29,9 +29,6 @@ jobs:
         if: env.PRERELEASE == 'true'
         with:
           name: ${{ inputs.tag }}
-          make_latest: env.PRERELEASE == 'false'
-          generate_release_notes: true
-          draft: env.PRERELEASE == 'true'
-          prerelease: env.PRERELEASE == 'true'
-          files: |
-            artifact
+          make_latest: false
+          draft: false
+          prerelease: true
