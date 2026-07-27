@@ -20,10 +20,10 @@ jobs:
         uses: softprops/action-gh-release@v3
         with:
           name: ${{ inputs.tag }}
-          make_latest: ${{ !env.PRERELEASE }}
+          make_latest: ${{ env.PRERELEASE == 'false' }}
           generate_release_notes: true
-          draft: ${{ env.PRERELEASE }}
-          prerelease: ${{ env.PRERELEASE }}
+          draft: ${{ env.PRERELEASE == 'true' }}
+          prerelease: ${{ env.PRERELEASE == 'true' }}
           files: |
             artifact
 
